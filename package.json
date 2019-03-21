@@ -1,6 +1,6 @@
 {
   "name": "guless",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "scripts": {
     "make": "tsc -p ./src/tsconfig.json",
     "lint": "tslint -p ./src/tsconfig.json -t codeFrame",
