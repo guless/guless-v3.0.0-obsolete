@@ -1,0 +1,19 @@
+{
+  "name": "guless",
+  "version": "3.0.1",
+  "scripts": {
+    "make": "tsc -p ./src/tsconfig.json",
+    "lint": "tslint -p ./src/tsconfig.json -t codeFrame",
+    "test": "jest --passWithNoTests",
+    "publish": "npm version patch"
+  },
+  "devDependencies": {
+    "jest": "^24.5.0",
+    "ts-jest": "^24.0.0",
+    "tslint": "^5.14.0",
+    "typescript": "^3.3.4000"
+  },
+  "dependencies": {
+    "@types/jest": "^24.0.11"
+  }
+}
