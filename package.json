@@ -5,7 +5,7 @@
     "make": "tsc -p ./src/tsconfig.json",
     "lint": "tslint -p ./src/tsconfig.json -t codeFrame",
     "test": "jest --passWithNoTests",
-    "publish": "npm version patch"
+    "prepublishOnly": "npm run lint && npm run test && npm version patch"
   },
   "devDependencies": {
     "jest": "^24.5.0",

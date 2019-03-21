@@ -1,0 +1,9 @@
+{
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+        "declaration": true,
+        "importHelpers": true,
+        "outDir": "../lib/",
+        "types": []
+    }
+}

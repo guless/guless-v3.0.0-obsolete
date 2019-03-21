@@ -1,0 +1,9 @@
+{
+    "extends": "tslint:latest",
+    "rules": {
+        "curly": [true, "as-needed"],
+        "no-bitwise": false,
+        "no-implicit-dependencies": false,
+        "no-submodule-imports": false
+    }
+}
