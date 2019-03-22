@@ -1,9 +1,27 @@
 {
     "extends": "tslint:latest",
     "rules": {
-        "curly": [true, "as-needed"],
+        "array-type": false,
+        "callable-types": false,
+        "max-file-line-count": false,
+        "max-line-length": false,
+        "member-ordering": false,
         "no-bitwise": false,
         "no-implicit-dependencies": false,
-        "no-submodule-imports": false
+        "no-submodule-imports": false,
+        "no-trailing-whitespace": [
+            true,
+            "ignore-blank-lines",
+            "ignore-comments",
+            "ignore-jsdoc"
+        ],
+        "prefer-conditional-expression": false,
+        "unified-signatures": false,
+        "variable-name": [
+            true,
+            "check-format",
+            "allow-leading-underscore",
+            "allow-trailing-underscore"
+        ]
     }
 }

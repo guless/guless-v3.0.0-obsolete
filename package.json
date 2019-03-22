@@ -2,18 +2,17 @@
   "name": "guless",
   "version": "3.0.2",
   "scripts": {
-    "make": "tsc -p ./src/tsconfig.json",
+    "make": "rimraf ./lib/ && tsc -p ./src/tsconfig.json",
     "lint": "tslint -p ./src/tsconfig.json -t codeFrame",
     "test": "jest --passWithNoTests",
     "prepublishOnly": "npm run lint && npm run test && npm version patch"
   },
   "devDependencies": {
+    "@types/jest": "^24.0.11",
     "jest": "^24.5.0",
+    "rimraf": "^2.6.3",
     "ts-jest": "^24.0.0",
     "tslint": "^5.14.0",
     "typescript": "^3.3.4000"
-  },
-  "dependencies": {
-    "@types/jest": "^24.0.11"
   }
 }
