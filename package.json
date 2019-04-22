@@ -1,6 +1,6 @@
 {
   "name": "guless",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "scripts": {
     "make": "rimraf ./lib/ && tsc -p ./src/tsconfig.json",
     "lint": "tslint -p ./src/tsconfig.json -t codeFrame",
