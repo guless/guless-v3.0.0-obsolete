@@ -1,0 +1,12 @@
+{
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+        "declaration": false,
+        "importHelpers": true,
+        "baseUrl": "../",
+        "paths": { 
+            "@guless/*": ["./src/*"],
+        },
+        "types": [],
+    }
+}
