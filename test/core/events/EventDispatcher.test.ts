@@ -2,10 +2,10 @@
 /// @Copyright ~2019 ☜Samlv9☞ and other contributors
 /// @MIT-LICENSE | 3.0.0 | https://developers.guless.com/
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-import Event from "@guless/events/Event";
-import EventDispatcher from "@guless/events/EventDispatcher";
-import EventPhase from "@guless/events/EventPhase";
-import IEventListener from "@guless/events/IEventListener";
+import Event from "@guless/core/events/Event";
+import EventDispatcher from "@guless/core/events/EventDispatcher";
+import EventPhase from "@guless/core/events/EventPhase";
+import IEventListener from "@guless/core/events/IEventListener";
 
 test("add/remove event listeners", () => {
     const element: EventDispatcher = new EventDispatcher();

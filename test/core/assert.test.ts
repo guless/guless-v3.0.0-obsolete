@@ -3,7 +3,7 @@
 /// @MIT-LICENSE | 3.0.0 | https://developers.guless.com/
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 import assert from "@guless/core/assert";
-import AssertionError from "@guless/errors/AssertionError";
+import AssertionError from "@guless/core/errors/AssertionError";
 
 test("throw exceptions", () => {
     expect(() => assert(true)).not.toThrow();

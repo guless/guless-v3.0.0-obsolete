@@ -2,12 +2,12 @@
 /// @Copyright ~2019 ☜Samlv9☞ and other contributors
 /// @MIT-LICENSE | 3.0.0 | https://developers.guless.com/
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-import EventDispatcher from "../../events/EventDispatcher";
-import IAddEventListenerOptions from "../../events/IAddEventListenerOptions";
-import IEventListener from "../../events/IEventListener";
-import IEventListenerObject from "../../events/IEventListenerObject";
-import IEventListenerOptions from "../../events/IEventListenerOptions";
 import assert from "../assert";
+import EventDispatcher from "../events/EventDispatcher";
+import IAddEventListenerOptions from "../events/IAddEventListenerOptions";
+import IEventListener from "../events/IEventListener";
+import IEventListenerObject from "../events/IEventListenerObject";
+import IEventListenerOptions from "../events/IEventListenerOptions";
 import ITickerEventMap from "./ITickerEventMap";
 import { default as microtime, TIME_ORIGIN } from "./microtime";
 import TickerEvent from "./TickerEvent";
