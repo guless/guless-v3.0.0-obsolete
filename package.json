@@ -13,7 +13,8 @@
     "lint:examples": "tslint -p ./examples/tsconfig.json  -t codeFrame",
     "test": "rimraf ./coverage/ && jest --passWithNoTests",
     "open:coverage": "open ./coverage/lcov-report/index.html",
-    "prepublishOnly": "npm version patch"
+    "prepublishOnly": "npm version patch",
+    "postpublish": "git push"
   },
   "devDependencies": {
     "@types/jest": "^24.0.11",
