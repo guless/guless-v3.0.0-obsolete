@@ -1,6 +1,6 @@
 {
   "name": "guless",
-  "version": "3.0.8",
+  "version": "3.0.9",
   "scripts": {
     "clean": "rimraf ./lib/ ./coverage/",
     "start": "webpack-dev-server --config=./examples/webpack.config.js --open",
