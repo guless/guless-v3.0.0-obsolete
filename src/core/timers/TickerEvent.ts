@@ -4,10 +4,11 @@
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 import Event from "../events/Event";
 import ITickerEventMap from "./ITickerEventMap";
+import * as TickerEventType from "./TickerEventType";
 
 class TickerEvent extends Event {
-    public static readonly UPDATE: string = "update";
-    public static readonly COMPLETE: string = "complete";
+    public static readonly UPDATE: string = TickerEventType.UPDATE;
+    public static readonly COMPLETE: string = TickerEventType.COMPLETE;
     
     private _time: number;
     
