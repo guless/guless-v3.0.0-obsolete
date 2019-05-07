@@ -19,6 +19,7 @@ abstract class UIComponent extends EventDispatcher {
     }
 
     private _element: HTMLElement;
+    private _documentContainer: null | HTMLElement = null;
     private _children: Array<UIComponent> = [];
     private _name: string = "";
     private _parent: null | UIComponent = null;
@@ -61,6 +62,52 @@ abstract class UIComponent extends EventDispatcher {
         super.removeEventListener(type, listener, options);
     }
 
+    public appendIntoDocument(container: HTMLElement): void {
+        if (this._documentContainer) {
+            this.removeFromDocument();
+        }
+
+        if (this._parent) {
+            this.removeFromParent();
+        }
+
+        this._documentContainer = container;
+        this._documentContainer.appendChild(this._element);
+
+        this.dispatchEvent(new UIComponentMutationEvent(UIComponentMutationEvent.INSERTED, false, false));
+    }
+
+    public insertIntoDocument(container: HTMLElement, beforeRefElement: null | HTMLElement): void {
+        if (this._documentContainer) {
+            this.removeFromDocument();
+        }
+
+        if (this._parent) {
+            this.removeFromParent();
+        }
+
+        this._documentContainer = container;
+        this._documentContainer.insertBefore(this._element, beforeRefElement);
+
+        this.dispatchEvent(new UIComponentMutationEvent(UIComponentMutationEvent.INSERTED, false, false));
+    }
+
+    public removeFromDocument(): void {
+        if (this._documentContainer) {
+            const container: HTMLElement = this._documentContainer;
+            this._documentContainer = null;
+
+            container.removeChild(this._element);
+            this.dispatchEvent(new UIComponentMutationEvent(UIComponentMutationEvent.REMOVED, false, false));
+        }
+    }
+
+    public removeFromParent(): void {
+        if (this._parent) {
+            this._parent.removeChild(this);
+        }
+    }
+
     public getChildByName(name: string): null | UIComponent {
         for (let i: number = 0, len: number = this._children.length; i < len; ++i) {
             if (name === this._children[i].name) { return this._children[i]; }
@@ -69,8 +116,12 @@ abstract class UIComponent extends EventDispatcher {
     }
 
     public addChild(component: UIComponent): void {
+        if (component._documentContainer) {
+            component.removeFromDocument();
+        }
+
         if (component._parent) {
-            component._parent.removeChild(component);
+            component.removeFromParent();
         }
 
         component._parent = this;
@@ -84,8 +135,12 @@ abstract class UIComponent extends EventDispatcher {
     public addChildAt(component: UIComponent, index: number): void {
         assert(index >= 0 && index <= this._children.length, `Index Of (${index}) if out of (${this._children.length}) bounds.`);
 
+        if (component._documentContainer) {
+            component.removeFromDocument();
+        }
+
         if (component._parent) {
-            component._parent.removeChild(component);
+            component.removeFromParent();
         }
 
         component._parent = this;

@@ -32,4 +32,4 @@ div.element.addEventListener("click", () => {
 div.addChild(span1);
 div.addChild(span2);
 console.log("-----------inserted into document------------");
-document.body.appendChild(div.element);
+div.appendIntoDocument(document.body);
