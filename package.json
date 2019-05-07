@@ -5,6 +5,7 @@
     "clean": "rimraf ./lib/ ./coverage/",
     "start": "webpack-dev-server --config=./examples/webpack.config.js --open",
     "start:ticker": "npm start -- --env.path=./core/timers/ticker",
+    "start:UIComponent": "npm start -- --env.path=./components/UIComponent",
     "build": "npm run clean && npm run lint && npm run test && npm run make",
     "make": "rimraf ./lib/ && tsc -p ./src/tsconfig.json",
     "lint": "npm run lint:src && npm run lint:test && npm run lint:examples",
