@@ -17,8 +17,14 @@ const __RAF__: null | typeof requestAnimationFrame = (typeof requestAnimationFra
 const __CAF__: null | typeof cancelAnimationFrame  = (typeof cancelAnimationFrame  === "function" ? cancelAnimationFrame  : typeof webkitCancelAnimationFrame  === "function" ? webkitCancelAnimationFrame  : null);
 
 class Ticker extends EventDispatcher {
+    private static __SHARED_TICKER__: null | Ticker = null;
+
     public static readonly MIN_INTERVAL: number = 10;
     public static readonly SYNC_REPAINT_AVAILABLE: boolean = (!!__RAF__ && !!__CAF__);
+
+    public static get shared(): Ticker {
+        return (Ticker.__SHARED_TICKER__ || (Ticker.__SHARED_TICKER__ = new Ticker(TickerInterval.SYNC_REPAINT)));
+    }
     
     private _handle?: any;
     private _running: boolean = false;
@@ -67,6 +73,7 @@ class Ticker extends EventDispatcher {
         
         this._running = true;
         this._handle = this._requestAnimationFrame();
+        this.dispatchEvent(new TickerEvent(TickerEvent.START, microtime(), false, false));
     }
     
     public stop(): void {
@@ -74,6 +81,7 @@ class Ticker extends EventDispatcher {
         
         this._running = false;
         this._cancelAnimationFrame();
+        this.dispatchEvent(new TickerEvent(TickerEvent.STOP, microtime(), false, false));
     }
     
     private _onUpdate(time: number): void {

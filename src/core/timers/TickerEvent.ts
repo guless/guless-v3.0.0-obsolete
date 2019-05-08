@@ -7,6 +7,8 @@ import ITickerEventMap from "./ITickerEventMap";
 import * as TickerEventType from "./TickerEventType";
 
 class TickerEvent extends Event {
+    public static readonly START: string = TickerEventType.START;
+    public static readonly STOP: string = TickerEventType.STOP;
     public static readonly UPDATE: string = TickerEventType.UPDATE;
     public static readonly COMPLETE: string = TickerEventType.COMPLETE;
     
