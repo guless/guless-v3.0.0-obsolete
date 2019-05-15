@@ -38,7 +38,7 @@ class EventDispatcher implements IEventDispatcher {
     }
     
     public dispatchEvent(event: Event): boolean {
-        assert(!event.__internal__isDispatched, "Event has already been dispatched.");
+        assert(!event.__internal__isDispatched, "Current event has already been dispatched.");
         
         event.__internal__isDispatched = true;
         event.__internal__target = this;
@@ -52,7 +52,9 @@ class EventDispatcher implements IEventDispatcher {
     }
     
     private _dispatchEventInternal(event: Event): boolean {
-        if (!event.bubbles) { // 不参与冒泡行为，因此仅调度 "AT_TARGET" 阶段的事件。
+        /// 1) 不参与冒泡行为，因此仅调度 "AT_TARGET" 阶段的事件。
+        /// 2) 当前对象不是嵌套的层级结构。
+        if (!event.bubbles || !(this as IEventDispatcher).parent) {
             this._dispatchEventAtTarget(event);
             return !event.defaultPrevented;
         }
