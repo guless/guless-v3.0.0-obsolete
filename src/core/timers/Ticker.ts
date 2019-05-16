@@ -73,7 +73,6 @@ class Ticker extends EventDispatcher {
         
         this._running = true;
         this._handle = this._requestAnimationFrame();
-        this.dispatchEvent(new TickerEvent(TickerEvent.START, microtime(), false, false));
     }
     
     public stop(): void {
@@ -81,7 +80,6 @@ class Ticker extends EventDispatcher {
         
         this._running = false;
         this._cancelAnimationFrame();
-        this.dispatchEvent(new TickerEvent(TickerEvent.STOP, microtime(), false, false));
     }
     
     private _onUpdate(time: number): void {
