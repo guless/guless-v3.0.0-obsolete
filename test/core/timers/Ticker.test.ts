@@ -2,7 +2,6 @@
 /// @Copyright ~2019 ☜Samlv9☞ and other contributors
 /// @MIT-LICENSE | 3.0.0 | https://developers.guless.com/
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-import elapsed from "@guless/core/timers/elapsed";
 import microtime from "@guless/core/timers/microtime";
 import Ticker from "@guless/core/timers/Ticker";
 
@@ -16,7 +15,7 @@ test("start/stop ticker", (done) => {
     
     ticker.addEventListener("update", (evt) => {
         // tslint:disable-next-line:no-console
-        console.log("update:", elapsed(t0, evt.time), elapsed(t0, microtime()), elapsed(microtime(), Date.now()));
+        console.log("elapsed:", evt.time - t0, "difference:", Date.now() - evt.time, microtime() - evt.time);
         t0 = evt.time;
         
         if (++count >= 5) {
