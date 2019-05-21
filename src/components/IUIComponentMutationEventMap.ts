@@ -6,9 +6,9 @@ import UIComponentMutationEvent from "./UIComponentMutationEvent";
 
 interface IUIComponentMutationEventMap {
     [UIComponentMutationEvent.INSERTED]: UIComponentMutationEvent;
-    [UIComponentMutationEvent.INSERTED_INTO_DOCUMENT]: UIComponentMutationEvent;
+    // [UIComponentMutationEvent.INSERTED_INTO_DOCUMENT]: UIComponentMutationEvent;
     [UIComponentMutationEvent.REMOVED]: UIComponentMutationEvent;
-    [UIComponentMutationEvent.REMOVED_FROM_DOCUMENT]: UIComponentMutationEvent;
+    // [UIComponentMutationEvent.REMOVED_FROM_DOCUMENT]: UIComponentMutationEvent;
 }
 
 export default IUIComponentMutationEventMap;

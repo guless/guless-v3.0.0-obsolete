@@ -7,9 +7,9 @@ import IUIComponentMutationEventMap from "./IUIComponentMutationEventMap";
 
 class UIComponentMutationEvent extends Event {
     public static readonly INSERTED = "inserted";
-    public static readonly INSERTED_INTO_DOCUMENT = "insertedIntoDocument";
+    // public static readonly INSERTED_INTO_DOCUMENT = "insertedIntoDocument";
     public static readonly REMOVED = "removed";
-    public static readonly REMOVED_FROM_DOCUMENT = "removedFromDocument";
+    // public static readonly REMOVED_FROM_DOCUMENT = "removedFromDocument";
 
     constructor(type: keyof IUIComponentMutationEventMap, bubbles?: boolean, cancelable?: boolean);
     constructor(type: string, bubbles?: boolean, cancelable?: boolean);
