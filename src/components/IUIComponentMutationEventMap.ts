@@ -3,13 +3,12 @@
 /// @MIT-LICENSE | 3.0.0 | https://developers.guless.com/
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 import UIComponentMutationEvent from "./UIComponentMutationEvent";
-import * as UIComponentMutationEventType from "./UIComponentMutationEventType";
 
 interface IUIComponentMutationEventMap {
-    [UIComponentMutationEventType.INSERTED]: UIComponentMutationEvent;
-    [UIComponentMutationEventType.INSERTED_INTO_DOCUMENT]: UIComponentMutationEvent;
-    [UIComponentMutationEventType.REMOVED]: UIComponentMutationEvent;
-    [UIComponentMutationEventType.REMOVED_FROM_DOCUMENT]: UIComponentMutationEvent;
+    [UIComponentMutationEvent.INSERTED]: UIComponentMutationEvent;
+    [UIComponentMutationEvent.INSERTED_INTO_DOCUMENT]: UIComponentMutationEvent;
+    [UIComponentMutationEvent.REMOVED]: UIComponentMutationEvent;
+    [UIComponentMutationEvent.REMOVED_FROM_DOCUMENT]: UIComponentMutationEvent;
 }
 
 export default IUIComponentMutationEventMap;

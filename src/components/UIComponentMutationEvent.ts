@@ -4,13 +4,12 @@
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 import Event from "../core/events/Event";
 import IUIComponentMutationEventMap from "./IUIComponentMutationEventMap";
-import * as UIComponentMutationEventType from "./UIComponentMutationEventType";
 
 class UIComponentMutationEvent extends Event {
-    public static readonly INSERTED: string = UIComponentMutationEventType.INSERTED;
-    public static readonly INSERTED_INTO_DOCUMENT: string = UIComponentMutationEventType.INSERTED_INTO_DOCUMENT;
-    public static readonly REMOVED: string = UIComponentMutationEventType.REMOVED;
-    public static readonly REMOVED_FROM_DOCUMENT: string = UIComponentMutationEventType.REMOVED_FROM_DOCUMENT;
+    public static readonly INSERTED = "inserted";
+    public static readonly INSERTED_INTO_DOCUMENT = "insertedIntoDocument";
+    public static readonly REMOVED = "removed";
+    public static readonly REMOVED_FROM_DOCUMENT = "removedFromDocument";
 
     constructor(type: keyof IUIComponentMutationEventMap, bubbles?: boolean, cancelable?: boolean);
     constructor(type: string, bubbles?: boolean, cancelable?: boolean);
