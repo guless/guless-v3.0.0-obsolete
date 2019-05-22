@@ -3,11 +3,10 @@
 /// @MIT-LICENSE | 3.0.0 | https://developers.guless.com/
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 import assert from "@guless/core/assert";
-import AssertionError from "@guless/core/errors/AssertionError";
 
 test("throw exceptions", () => {
     expect(() => assert(true)).not.toThrow();
-    expect(() => assert(false)).toThrow(AssertionError);
+    expect(() => assert(false)).toThrow(Error);
     expect(() => assert(false)).toThrow("assert failed!");
     expect(() => assert(false, "I am assertion error!")).toThrow("I am assertion error!");
 });
