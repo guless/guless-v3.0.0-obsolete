@@ -2,7 +2,6 @@
 /// @Copyright ~2019 ☜Samlv9☞ and other contributors
 /// @MIT-LICENSE | 3.0.0 | https://developers.guless.com/
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-import assert from "../assert";
 import Event from "./Event";
 import EventPhase from "./EventPhase";
 import IAddEventListenerOptions from "./IAddEventListenerOptions";
