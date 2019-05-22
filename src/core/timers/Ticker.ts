@@ -33,7 +33,7 @@ class Ticker extends EventDispatcher {
     
     constructor(interval: number = TickerInterval.SYNC_REPAINT) {
         super();
-        assert((interval === TickerInterval.SYNC_REPAINT) || (interval >= Ticker.MIN_INTERVAL), `Ticker's "interval" must great than or equals "MIN_INTERVAL(${Ticker.MIN_INTERVAL}ms)".`);
+        assert((interval === TickerInterval.SYNC_REPAINT) || (interval >= Ticker.MIN_INTERVAL), `The supplied interval must great than or equals Ticker.MIN_INTERVAL(${Ticker.MIN_INTERVAL}ms).`);
         this._interval = interval;
     }
     
@@ -58,7 +58,7 @@ class Ticker extends EventDispatcher {
     }
     
     public setCompatibleSyncRepaintInterval(value: number): void {
-        assert(value >= Ticker.MIN_INTERVAL, `Ticker's "compatibleSyncRepaintInterval" must great than or equals "MIN_INTERVAL(${Ticker.MIN_INTERVAL}ms)".`);
+        assert(value >= Ticker.MIN_INTERVAL, `The supplied interval must great than or equals Ticker.MIN_INTERVAL(${Ticker.MIN_INTERVAL}ms).`);
         this._compatibleSyncRepaintInterval = value;
     }
     

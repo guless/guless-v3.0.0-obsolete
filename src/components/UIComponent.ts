@@ -133,7 +133,7 @@ abstract class UIComponent extends EventDispatcher {
     }
 
     public addChildAt(component: UIComponent, index: number): void {
-        assert(index >= 0 && index <= this._children.length, `Index Of (${index}) if out of (${this._children.length}) bounds.`);
+        assert(index >= 0 && index <= this._children.length, `The supplied index is out of bounds.`);
 
         if (component._documentContainer) {
             component.removeFromDocument();
@@ -172,7 +172,7 @@ abstract class UIComponent extends EventDispatcher {
     }
 
     public removeChildAt(index: number): void {
-        assert(index >= 0 && index < this._children.length, `Index Of (${index}) if out of (${this._children.length}) bounds.`);
+        assert(index >= 0 && index < this._children.length, `The supplied index is out of bounds.`);
         const component: UIComponent = this._children[index];
 
         component._parent = null;
@@ -200,7 +200,7 @@ abstract class UIComponent extends EventDispatcher {
         const index1: number = this._children.indexOf(component1);
         const index2: number = this._children.indexOf(component2);
 
-        assert(index1 !== -1 && index2 !== -1, `Swap's children must be a child of parent UIComponent.`);
+        assert(index1 !== -1 && index2 !== -1, `The supplied components must be a child of the caller`);
 
         this._children[index1] = component2;
         this._children[index2] = component1;
