@@ -13,13 +13,10 @@ class Event {
     private _target: null | IEventDispatcher = null;
     private _currentTarget: null | IEventDispatcher = null;
     private _eventPhase: EventPhase = EventPhase.NONE;
-    private _isDispatched: boolean = false;
     private _isHandlingPassive: boolean = false;
     private _isDefaultPrevented: boolean = false;
     private _isStopPropagation: boolean = false;
     private _isStopImmediatePropagation: boolean = false;
-    private _path: Array<IEventDispatcher> = [];
-    private _pathWasInitialized: boolean = false;
     
     constructor(type: string, bubbles: boolean = false, cancelable: boolean = false) {
         this._type = type;
@@ -43,16 +40,6 @@ class Event {
     }
     
     /** @internal */
-    get __internal__isDispatched(): boolean {
-        return this._isDispatched;
-    }
-    
-    /** @internal */
-    set __internal__isDispatched(value: boolean) {
-        this._isDispatched = value;
-    }
-    
-    /** @internal */
     set __internal__isHandlingPassive(value: boolean) {
         this._isHandlingPassive = value;
     }
@@ -65,20 +52,6 @@ class Event {
     /** @internal */
     get __internal__isStopImmediatePropagation(): boolean {
         return this._isStopImmediatePropagation;
-    }
-    
-    public get path(): ReadonlyArray<IEventDispatcher> {
-        if (!this._pathWasInitialized && this._target && this._isDispatched) {
-            this._pathWasInitialized = true;
-            let current: null | IEventDispatcher = this._target;
-            
-            while (current) {
-                this._path.push(current);
-                current = current.parent && current !== current.parent ? current.parent : null;
-            }
-        }
-        
-        return this._path;
     }
     
     public get type(): string {

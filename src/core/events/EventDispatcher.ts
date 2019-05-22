@@ -38,9 +38,6 @@ class EventDispatcher implements IEventDispatcher {
     }
     
     public dispatchEvent(event: Event): boolean {
-        assert(!event.__internal__isDispatched, "Current event has already been dispatched.");
-        
-        event.__internal__isDispatched = true;
         event.__internal__target = this;
                 
         const defaultWasNotPrevented: boolean = this._dispatchEventInternal(event);
@@ -58,9 +55,11 @@ class EventDispatcher implements IEventDispatcher {
             this._dispatchEventAtTarget(event);
             return !event.defaultPrevented;
         }
+
+        const path: ReadonlyArray<IEventDispatcher> = this._calculatePath(event.target as IEventDispatcher);
         
         /// 捕获阶段。
-        this._dispatchEventAtCapturing(event);
+        this._dispatchEventAtCapturingWithPath(event, path);
         if (event.__internal__isStopPropagation) {
             return false;
         }
@@ -72,8 +71,20 @@ class EventDispatcher implements IEventDispatcher {
         }
         
         /// 冒泡阶段。
-        this._dispatchEventAtBubbling(event);
+        this._dispatchEventAtBubblingWithPath(event, path);
         return !event.defaultPrevented;
+    }
+
+    private _calculatePath(target: IEventDispatcher): ReadonlyArray<IEventDispatcher> {
+        const path: Array<IEventDispatcher> = [];
+        let current: null | IEventDispatcher = target;
+
+        while (current) {
+            path.push(current);
+            current = current.parent && current.parent !== current ? current.parent : null;
+        }
+
+        return path;
     }
     
     private _dispatchEventAtTarget(event: Event): void {
@@ -82,23 +93,21 @@ class EventDispatcher implements IEventDispatcher {
         (event.currentTarget as EventDispatcher)._dispatchEventToListeners(event);
     }
     
-    private _dispatchEventAtCapturing(event: Event): void {
+    private _dispatchEventAtCapturingWithPath(event: Event, path: ReadonlyArray<IEventDispatcher>): void {
         event.__internal__eventPhase = EventPhase.CAPTURING_PHASE;
-        const path: ReadonlyArray<IEventDispatcher> = event.path;
         
         for (let i: number = path.length - 1; i > 0 && !event.__internal__isStopPropagation; --i) {
             event.__internal__currentTarget = path[i];
-            (path[i] as EventDispatcher)._dispatchEventToListeners(event);
+            (event.currentTarget as EventDispatcher)._dispatchEventToListeners(event);
         }
     }
     
-    private _dispatchEventAtBubbling(event: Event): void {
+    private _dispatchEventAtBubblingWithPath(event: Event, path: ReadonlyArray<IEventDispatcher>): void {
         event.__internal__eventPhase = EventPhase.BUBBLING_PHASE;
-        const path: ReadonlyArray<IEventDispatcher> = event.path;
         
         for (let i: number = 1, size: number = path.length; i < size && !event.__internal__isStopPropagation; ++i) {
             event.__internal__currentTarget = path[i];
-            (path[i] as EventDispatcher)._dispatchEventToListeners(event);
+            (event.currentTarget as EventDispatcher)._dispatchEventToListeners(event);
         }
     }
     
