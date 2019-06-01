@@ -4,7 +4,7 @@
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function deprecated(message: string): void {
     // tslint:disable-next-line: no-console
-    console.warn(`[GULESS(deprecated)] ${message}`);
+    console.warn(`[GULESS] ${message}`);
 }
 
 export default deprecated;

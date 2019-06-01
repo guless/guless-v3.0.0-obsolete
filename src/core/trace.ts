@@ -4,7 +4,7 @@
 /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function trace(...messages: Array<any>): void {
     // tslint:disable-next-line: no-console
-    console.log(`[GULESS(trace)]`, ...messages);
+    console.log(`[GULESS]`, ...messages);
 }
 
 export default trace;
